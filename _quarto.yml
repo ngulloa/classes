@@ -3,17 +3,20 @@ project:
   output-dir: docs
 
 website:
-  title: "Dinamica"
+  title: "Dinámica - FIS1514"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - unidad-1.qmd
+      - unidad-2.qmd
+      - unidad-3.qmd
+      - unidad-4.qmd
 
 format:
   html:
     theme:
-      - cosmo
+      - flatly
       - brand
     css: styles.css
     toc: true

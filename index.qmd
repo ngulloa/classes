@@ -1,12 +1,6 @@
 ---
-title: "dinamica"
+title: "Inicio"
 jupyter: python3
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{python}
-1 + 1
-```
+Este es un espacio libre y gratuito donde encontrarás una amplia variedad de recursos, incluyendo información teórica, ejercicios resueltos y simulaciones interactivas.
