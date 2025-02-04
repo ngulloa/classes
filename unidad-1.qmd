@@ -1,5 +1,89 @@
 ---
 title: "Unidad 1"
 author: "Nicolás Ulloa Gatica"
+format:
+  html:
+    code-fold: true
 jupyter: python3
+mathjax: true
 ---
+
+# Fundamentos de Cinemática
+
+## Desplazamiento
+
+El desplazamiento de una partícula (u objeto) se define como el cambio de posición. Si la posición inicial de la partícula está descrita por el vector $\vec{r}_1$ y la posición final corresponde a $\vec{r}_2$, entonces el desplazamiento estará dado por:
+
+$$
+\Delta \vec{r} := \vec{r}_2 - \vec{r}_1
+$$
+
+## Velocidad
+
+La velocidad se define como el desplazamiento por unidad de tiempo. En otras palabras, es la razón de cambio entre la posición y el tiempo. Si una partícula se encuentra en la posición $\vec{r}_1$ en el instante $t_1$ y se desplaza a la posición $\vec{r}_2$ en el instante de tiempo $t_2$, su **velocidad media** será:
+
+$$
+\vec{v}_m := \frac{\vec{r}_2 - \vec{r}_1}{t_2 - t_1} = \frac{\Delta \vec{r}}{\Delta t}
+$$
+
+Lo anterior se define como velocidad media, dado que entre el instante $t_1$ y el instante $t_2$ pudieron existir diversos cambios de velocidad que no se contemplan en la ecuación anterior.
+
+Para tener información de la velocidad durante todo el tiempo, al saber cómo varía la posición $\vec{r}$ respecto al tiempo $t$, esto se logra mediante el cálculo diferencial. Es decir, la **velocidad instantánea**, o simplemente velocidad, se define como:
+
+$$
+\vec{v} := \lim_{\Delta t \rightarrow 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d\vec{r}}{dt}
+$$
+
+## Aceleración
+
+De forma análoga a lo anterior, la aceleración se define como el cambio de velocidad en un intervalo de tiempo. Así, la **aceleración media** será:
+
+$$
+\vec{a}_m := \frac{\vec{v}_2 - \vec{v}_1}{t_2 - t_1} = \frac{\Delta \vec{v}}{\Delta t}
+$$
+
+Mientras que la **aceleración instantánea**, o simplemente aceleración, se define como:
+
+$$
+\vec{a} := \lim_{\Delta t \rightarrow 0} \frac{\Delta \vec{v}}{\Delta t} = \frac{d\vec{v}}{dt}
+$$
+
+## Ecuaciones de movimiento
+
+Dadas las ecuaciones anteriores, es posible encontrar ecuaciones que caractericen el movimiento de una partícula mediante la integración. Por ejemplo, para una **aceleración constante** se tiene:
+
+$$
+\int \vec{a} \, d\tau = \int \frac{d\vec{v}}{d\tau} \, d\tau
+$$
+
+Lo que lleva a:
+
+$$
+\boxed{\vec{v}(t) = \vec{v}_0 + \vec{a} \cdot t}
+$$
+
+De igual forma, si se integra nuevamente la ecuación anterior, se obtiene:
+
+$$
+\boxed{\vec{r}(t) = \vec{r}_0 + \vec{v_0} \cdot t + \frac{1}{2} \vec{a} \cdot t^2}
+$$
+
+Esta ecuación es conocida como la **ecuación itinerario**, y solo aplica para los casos en los que la aceleración es constante. Sin embargo, se puede obtener, a partir del procedimiento anterior, una ecuación de movimiento para cualquier partícula a partir de su velocidad o aceleración.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
