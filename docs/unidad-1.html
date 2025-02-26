@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -195,6 +161,11 @@ window.Quarto = {
   <li><a href="#aceleración" id="toc-aceleración" class="nav-link" data-scroll-target="#aceleración">Aceleración</a></li>
   <li><a href="#ecuaciones-de-movimiento" id="toc-ecuaciones-de-movimiento" class="nav-link" data-scroll-target="#ecuaciones-de-movimiento">Ecuaciones de movimiento</a></li>
   </ul></li>
+  <li><a href="#cinemática-en-2-dimensiones" id="toc-cinemática-en-2-dimensiones" class="nav-link" data-scroll-target="#cinemática-en-2-dimensiones">Cinemática en 2 dimensiones</a>
+  <ul class="collapse">
+  <li><a href="#consideraciones" id="toc-consideraciones" class="nav-link" data-scroll-target="#consideraciones">Consideraciones</a></li>
+  <li><a href="#metodología-para-resolución-de-problemas" id="toc-metodología-para-resolución-de-problemas" class="nav-link" data-scroll-target="#metodología-para-resolución-de-problemas">Metodología para resolución de problemas</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -245,7 +216,79 @@ window.Quarto = {
 <p>Para tener información de la velocidad durante todo el tiempo, al saber cómo varía la posición <span class="math inline">\(\vec{r}\)</span> respecto al tiempo <span class="math inline">\(t\)</span>, esto se logra mediante el cálculo diferencial. Es decir, la <strong>velocidad instantánea</strong>, o simplemente velocidad, se define como:</p>
 <p><span class="math display">\[
 \vec{v} := \lim_{\Delta t \rightarrow 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d\vec{r}}{dt}
-\]</span></p>
+\]</span> A continuación, se muestra la simulación de un movimiento rectilineo uniforme. Esto es, una particula moviéndose en una dimensión con velocidad constante.</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<script>
+  let x = 50, y = 200;
+  let vx = 2, r = 20;
+  let time = 0;
+  let positions = [];
+  let graphWidth = 300, graphHeight = 150;
+  let cycleComplete = false;
+  let startX = 50;
+
+  function setup() {
+    createCanvas(800, 400);
+    background(220);
+  }
+
+  function draw() {
+    background(220);
+
+    // Mover la partícula
+    x += vx;
+    if (x > width - r || x < 0 + r) vx *= -1;
+
+    // Dibujar la partícula
+    fill(255, 0, 0);
+    ellipse(x, y, r, r);
+
+    // Actualizar el gráfico de posición vs. tiempo
+    time += 1;
+    positions.push({time, pos: x});
+
+    // Si la partícula completa una oscilación (vuelve a la posición inicial), reiniciar
+    if (x === startX && cycleComplete) {
+      cycleComplete = false;
+    }
+    if (x === startX && !cycleComplete) {
+      cycleComplete = true;
+    }
+
+    // Limitar el número de puntos en el gráfico
+    //if (positions.length > graphWidth) positions.shift();
+
+    // Dibujar el gráfico
+    drawGraph();
+  }
+
+  function drawGraph() {
+    // Posición y tamaño del gráfico
+    let graphX = width - graphWidth - 20;
+    let graphY = height - graphHeight - 20;
+
+    // Dibujar los ejes
+    stroke(0);
+    line(graphX, graphY, graphX, graphY + graphHeight); // Eje Y
+    line(graphX, graphY + graphHeight, graphX + graphWidth, graphY + graphHeight); // Eje X
+
+    // Dibujar la línea del gráfico
+    noFill();
+    beginShape();
+    for (let i = 0; i < positions.length; i++) {
+      let px = map(positions[i].time, 0, positions[positions.length - 1].time, graphX, graphX + graphWidth);
+      let py = map(positions[i].pos, 0, width, graphY + graphHeight, graphY);
+      vertex(px, py);
+    }
+    endShape();
+
+    // Etiqueta del eje Y (Posición)
+    textSize(12);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("Posición", graphX - 30, graphY + graphHeight / 2);
+  }
+</script>
 </section>
 <section id="aceleración" class="level2">
 <h2 class="anchored" data-anchor-id="aceleración">Aceleración</h2>
@@ -273,35 +316,57 @@ window.Quarto = {
 \boxed{\vec{r}(t) = \vec{r}_0 + \vec{v_0} \cdot t + \frac{1}{2} \vec{a} \cdot t^2}
 \]</span></p>
 <p>Esta ecuación es conocida como la <strong>ecuación itinerario</strong>, y solo aplica para los casos en los que la aceleración es constante. Sin embargo, se puede obtener, a partir del procedimiento anterior, una ecuación de movimiento para cualquier partícula a partir de su velocidad o aceleración.</p>
-<div id="cell-fig-polar" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  subplot_kw <span class="op">=</span> {<span class="st">'projection'</span>: <span class="st">'polar'</span>} </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div id="fig-polar" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="unidad-1_files/figure-html/fig-polar-output-1.png" width="450" height="439" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: A line plot on a polar axis
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
+</section>
+</section>
+<section id="cinemática-en-2-dimensiones" class="level1">
+<h1>Cinemática en 2 dimensiones</h1>
+<section id="consideraciones" class="level2">
+<h2 class="anchored" data-anchor-id="consideraciones">Consideraciones</h2>
+<p>Con una buena comprensión del movimiento unidimensional, el movimiento bi o tridimensional no presenta mayores complicaciones al tener en mente tres consideraciones:</p>
+<ul>
+<li>El sistema de coordenadas es siempre ortogonal, ya sea en coordenadas cartesianas o polares. Esto implica que todo lo que sucede en una dimensión, no afecta a la otra dimensión.</li>
+<li>El tiempo, para un mismo instante, es el mismo en ambas dimensiones.</li>
+<li>Para cada dimensión se aplica su ecuación respectiva y si existen cantidades vectoriales, se deben descomponer en cada una de las dimensiones para realizar el análisis matemático. En el título <em>Conceptos previos</em> se encuentra información respecto a la descomposición de vectores.</li>
+</ul>
+</section>
+<section id="metodología-para-resolución-de-problemas" class="level2">
+<h2 class="anchored" data-anchor-id="metodología-para-resolución-de-problemas">Metodología para resolución de problemas</h2>
+<p>Generalmente, los problemas iniciales de cinemática en 2 dimensiones conservan la misma lógica para ser resueltos. Esta lógica se puede resumir en 6 pasos:</p>
+<ol type="1">
+<li><strong>Definir el origen y sistema de coordenadas</strong> más útil. Si el problema trata de un movimiento circular, lo más probable es que sea más simple utilizar coordenadas polares.</li>
+<li><strong>Identificar</strong> las cantidades conocidas y las que se piden.</li>
+<li><strong>Descomponer</strong> las cantidades vectoriales en cada eje del sistema coordenado, que serán utilizadas al escribir las ecuaciones de movimiento.</li>
+<li><strong>Establecer las ecuaciones de movimiento</strong> para cada eje del sistema de coordenadas. En coordenadas cartesianas, y con aceleración constante, por ejemplo, las ecuaciones serían:</li>
+</ol>
+<p><span class="math display">\[
+\vec{r}_x(t) = r_{0x} + v_{0x}\cdot t + \frac{1}{2}\cdot a_x \cdot t^2 \hspace{2cm} \vec{v}_x(t) = v_{0x} + a_x\cdot t
+\]</span></p>
+<p><span class="math display">\[
+\vec{r}_y(t) = r_{0y} + v_{0y}\cdot t + \frac{1}{2}\cdot a_y \cdot t^2 \hspace{2cm} \vec{v}_y(t) = v_{0y} + a_y\cdot t
+\]</span></p>
+<ol start="5" type="1">
+<li><strong>Evaluar con las cantidades conocidas</strong> para algún instante, posición, velocidad o aceleración.</li>
+</ol>
+<p>Por ejemplo, una partícula comienza a moverse desde el origen <span class="math inline">\((s_0=0)\)</span>, <span class="math inline">\((v_0=0)\)</span>. La partícula alcanza velocidad <span class="math inline">\(b\)</span> en el eje <span class="math inline">\(x\)</span> en el instante <span class="math inline">\(t = t_1\)</span> y llega a la posición <span class="math inline">\(H\)</span> en el eje <span class="math inline">\(y\)</span> para ese mismo instante. Si la aceleración en el eje <span class="math inline">\(y\)</span> es <span class="math inline">\(c\)</span>, las ecuaciones serán:</p>
+<p><span class="math display">\[
+\vec{r}_x(t_1) = \frac{1}{2}\cdot a_x \cdot t_1^2 \hspace{2cm} \vec{v}_x(t_1) = b = a_x\cdot t_1
+\]</span></p>
+<p><span class="math display">\[
+\vec{r}_y(t_1) = H = \frac{1}{2}\cdot c \cdot t_1^2 \hspace{2cm} \vec{v}_y(t_1) = c\cdot t_1
+\]</span></p>
+<p>Con estas relaciones ya es posible describir el movimiento completo de la partícula.</p>
+<ol start="6" type="1">
+<li>Por último, solo queda <strong>resolver el sistema de ecuaciones</strong> y encontrar lo que piden en el problema. Para el ejemplo anterior, el sistema de ecuaciones en el instante <span class="math inline">\(t_1\)</span>, de manera más ordenada, sería:</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;r_x = \frac{1}{2} \cdot a_x \cdot t_1^2\\
+&amp;b=a_x\cdot t_1\\
+&amp;H=\frac{1}{2} \cdot c \cdot t_1^2\\
+&amp;v_y = c\cdot t_1
+\end{aligned}
+\]</span></p>
+<p>Las incógnitas (cantidades desconocidas, no entregadas en el enunciado) son <span class="math inline">\(r_x\)</span>, <span class="math inline">\(t_1\)</span>, <span class="math inline">\(v_y\)</span>, <span class="math inline">\(a_x\)</span>. Al ser 4 incógnitas y 4 ecuaciones, es posible resolver el sistema y encontrar el valor de cualquiera de las 4 incógnitas en función de cantidades conocidas.</p>
 
 
 </section>

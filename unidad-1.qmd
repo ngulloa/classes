@@ -33,6 +33,80 @@ Para tener información de la velocidad durante todo el tiempo, al saber cómo v
 $$
 \vec{v} := \lim_{\Delta t \rightarrow 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d\vec{r}}{dt}
 $$
+A continuación, se muestra la simulación de un movimiento rectilineo uniforme. Esto es, una particula moviéndose en una dimensión con velocidad constante.
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<script>
+  let x = 50, y = 200;
+  let vx = 2, r = 20;
+  let time = 0;
+  let positions = [];
+  let graphWidth = 300, graphHeight = 150;
+  let cycleComplete = false;
+  let startX = 50;
+
+  function setup() {
+    createCanvas(800, 400);
+    background(220);
+  }
+
+  function draw() {
+    background(220);
+
+    // Mover la partícula
+    x += vx;
+    if (x > width - r || x < 0 + r) vx *= -1;
+
+    // Dibujar la partícula
+    fill(255, 0, 0);
+    ellipse(x, y, r, r);
+
+    // Actualizar el gráfico de posición vs. tiempo
+    time += 1;
+    positions.push({time, pos: x});
+
+    // Si la partícula completa una oscilación (vuelve a la posición inicial), reiniciar
+    if (x === startX && cycleComplete) {
+      cycleComplete = false;
+    }
+    if (x === startX && !cycleComplete) {
+      cycleComplete = true;
+    }
+
+    // Limitar el número de puntos en el gráfico
+    //if (positions.length > graphWidth) positions.shift();
+
+    // Dibujar el gráfico
+    drawGraph();
+  }
+
+  function drawGraph() {
+    // Posición y tamaño del gráfico
+    let graphX = width - graphWidth - 20;
+    let graphY = height - graphHeight - 20;
+
+    // Dibujar los ejes
+    stroke(0);
+    line(graphX, graphY, graphX, graphY + graphHeight); // Eje Y
+    line(graphX, graphY + graphHeight, graphX + graphWidth, graphY + graphHeight); // Eje X
+
+    // Dibujar la línea del gráfico
+    noFill();
+    beginShape();
+    for (let i = 0; i < positions.length; i++) {
+      let px = map(positions[i].time, 0, positions[positions.length - 1].time, graphX, graphX + graphWidth);
+      let py = map(positions[i].pos, 0, width, graphY + graphHeight, graphY);
+      vertex(px, py);
+    }
+    endShape();
+
+    // Etiqueta del eje Y (Posición)
+    textSize(12);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("Posición", graphX - 30, graphY + graphHeight / 2);
+  }
+</script>
 
 ## Aceleración
 
@@ -70,20 +144,58 @@ $$
 
 Esta ecuación es conocida como la **ecuación itinerario**, y solo aplica para los casos en los que la aceleración es constante. Sin embargo, se puede obtener, a partir del procedimiento anterior, una ecuación de movimiento para cualquier partícula a partir de su velocidad o aceleración.
 
-```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
 
-import numpy as np
-import matplotlib.pyplot as plt
 
-r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
-fig, ax = plt.subplots(
-  subplot_kw = {'projection': 'polar'} 
-)
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1, 1.5, 2])
-ax.grid(True)
-plt.show()
-```
+# Cinemática en 2 dimensiones
+
+## Consideraciones
+
+Con una buena comprensión del movimiento unidimensional, el movimiento bi o tridimensional no presenta mayores complicaciones al tener en mente tres consideraciones:
+
+- El sistema de coordenadas es siempre ortogonal, ya sea en coordenadas cartesianas o polares. Esto implica que todo lo que sucede en una dimensión, no afecta a la otra dimensión.
+- El tiempo, para un mismo instante, es el mismo en ambas dimensiones.
+- Para cada dimensión se aplica su ecuación respectiva y si existen cantidades vectoriales, se deben descomponer en cada una de las dimensiones para realizar el análisis matemático. En el título *Conceptos previos* se encuentra información respecto a la descomposición de vectores.
+
+## Metodología para resolución de problemas
+
+Generalmente, los problemas iniciales de cinemática en 2 dimensiones conservan la misma lógica para ser resueltos. Esta lógica se puede resumir en 6 pasos:
+
+1. **Definir el origen y sistema de coordenadas** más útil. Si el problema trata de un movimiento circular, lo más probable es que sea más simple utilizar coordenadas polares.
+2. **Identificar** las cantidades conocidas y las que se piden.
+3. **Descomponer** las cantidades vectoriales en cada eje del sistema coordenado, que serán utilizadas al escribir las ecuaciones de movimiento.
+4. **Establecer las ecuaciones de movimiento** para cada eje del sistema de coordenadas. En coordenadas cartesianas, y con aceleración constante, por ejemplo, las ecuaciones serían:
+
+$$
+\vec{r}_x(t) = r_{0x} + v_{0x}\cdot t + \frac{1}{2}\cdot a_x \cdot t^2 \hspace{2cm} \vec{v}_x(t) = v_{0x} + a_x\cdot t
+$$
+
+$$
+\vec{r}_y(t) = r_{0y} + v_{0y}\cdot t + \frac{1}{2}\cdot a_y \cdot t^2 \hspace{2cm} \vec{v}_y(t) = v_{0y} + a_y\cdot t
+$$
+
+5. **Evaluar con las cantidades conocidas** para algún instante, posición, velocidad o aceleración.
+
+Por ejemplo, una partícula comienza a moverse desde el origen $(s_0=0)$, $(v_0=0)$. La partícula alcanza velocidad $b$ en el eje $x$ en el instante $t = t_1$ y llega a la posición $H$ en el eje $y$ para ese mismo instante. Si la aceleración en el eje $y$ es $c$, las ecuaciones serán:
+
+$$
+\vec{r}_x(t_1) = \frac{1}{2}\cdot a_x \cdot t_1^2 \hspace{2cm} \vec{v}_x(t_1) = b = a_x\cdot t_1
+$$
+
+$$
+\vec{r}_y(t_1) = H = \frac{1}{2}\cdot c \cdot t_1^2 \hspace{2cm} \vec{v}_y(t_1) = c\cdot t_1
+$$
+
+Con estas relaciones ya es posible describir el movimiento completo de la partícula.
+
+6. Por último, solo queda **resolver el sistema de ecuaciones** y encontrar lo que piden en el problema. Para el ejemplo anterior, el sistema de ecuaciones en el instante $t_1$, de manera más ordenada, sería:
+
+$$
+\begin{aligned}
+&r_x = \frac{1}{2} \cdot a_x \cdot t_1^2\\
+&b=a_x\cdot t_1\\
+&H=\frac{1}{2} \cdot c \cdot t_1^2\\
+&v_y = c\cdot t_1
+\end{aligned}
+$$
+
+Las incógnitas (cantidades desconocidas, no entregadas en el enunciado) son $r_x$, $t_1$, $v_y$, $a_x$. Al ser 4 incógnitas y 4 ecuaciones, es posible resolver el sistema y encontrar el valor de cualquiera de las 4 incógnitas en función de cantidades conocidas.
