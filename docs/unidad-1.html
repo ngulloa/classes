@@ -214,81 +214,84 @@ window.Quarto = {
 \]</span></p>
 <p>Lo anterior se define como velocidad media, dado que entre el instante <span class="math inline">\(t_1\)</span> y el instante <span class="math inline">\(t_2\)</span> pudieron existir diversos cambios de velocidad que no se contemplan en la ecuación anterior.</p>
 <p>Para tener información de la velocidad durante todo el tiempo, al saber cómo varía la posición <span class="math inline">\(\vec{r}\)</span> respecto al tiempo <span class="math inline">\(t\)</span>, esto se logra mediante el cálculo diferencial. Es decir, la <strong>velocidad instantánea</strong>, o simplemente velocidad, se define como:</p>
-<p><span class="math display">\[
+<span class="math display">\[
 \vec{v} := \lim_{\Delta t \rightarrow 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d\vec{r}}{dt}
-\]</span> A continuación, se muestra la simulación de un movimiento rectilineo uniforme. Esto es, una particula moviéndose en una dimensión con velocidad constante.</p>
+\]</span> A continuación, se muestra la simulación de un movimiento rectilineo uniforme. Esto es, una particula moviéndose en una dimensión con velocidad constante.
+<div id="animation-container">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 <script>
-  let x = 50, y = 200;
-  let vx = 2, r = 20;
-  let time = 0;
-  let positions = [];
-  let graphWidth = 300, graphHeight = 150;
-  let cycleComplete = false;
-  let startX = 50;
+    let x = 50, y = 70;
+    let vx = 2, r = 20;
+    let time = 0;
+    let positions = [];
+    let graphWidth = 300, graphHeight = 150;
+    let cycleComplete = false;
+    let startX = 50;
 
-  function setup() {
-    createCanvas(800, 400);
-    background(220);
-  }
-
-  function draw() {
-    background(220);
-
-    // Mover la partícula
-    x += vx;
-    if (x > width - r || x < 0 + r) vx *= -1;
-
-    // Dibujar la partícula
-    fill(255, 0, 0);
-    ellipse(x, y, r, r);
-
-    // Actualizar el gráfico de posición vs. tiempo
-    time += 1;
-    positions.push({time, pos: x});
-
-    // Si la partícula completa una oscilación (vuelve a la posición inicial), reiniciar
-    if (x === startX && cycleComplete) {
-      cycleComplete = false;
-    }
-    if (x === startX && !cycleComplete) {
-      cycleComplete = true;
+    function setup() {
+      let canvas = createCanvas(windowWidth * 0.4, windowHeight * 0.4); // Ajuste dinámico según el tamaño de la ventana
+      canvas.parent('animation-container'); // Coloca el lienzo dentro del contenedor
+      background(220);
     }
 
-    // Limitar el número de puntos en el gráfico
-    //if (positions.length > graphWidth) positions.shift();
+    function draw() {
+      background(220);
 
-    // Dibujar el gráfico
-    drawGraph();
-  }
+      // Mover la partícula
+      x += vx;
+      if (x > width - r || x < 0 + r) vx *= -1;
 
-  function drawGraph() {
-    // Posición y tamaño del gráfico
-    let graphX = width - graphWidth - 20;
-    let graphY = height - graphHeight - 20;
+      // Dibujar la partícula
+      fill(255, 0, 0);
+      ellipse(x, y, r, r);
 
-    // Dibujar los ejes
-    stroke(0);
-    line(graphX, graphY, graphX, graphY + graphHeight); // Eje Y
-    line(graphX, graphY + graphHeight, graphX + graphWidth, graphY + graphHeight); // Eje X
+      // Actualizar el gráfico de posición vs. tiempo
+      time += 1;
+      positions.push({time, pos: x});
 
-    // Dibujar la línea del gráfico
-    noFill();
-    beginShape();
-    for (let i = 0; i < positions.length; i++) {
-      let px = map(positions[i].time, 0, positions[positions.length - 1].time, graphX, graphX + graphWidth);
-      let py = map(positions[i].pos, 0, width, graphY + graphHeight, graphY);
-      vertex(px, py);
+      // Si la partícula completa una oscilación (vuelve a la posición inicial), reiniciar
+      if (x === startX && cycleComplete) {
+        cycleComplete = false;
+      }
+      if (x === startX && !cycleComplete) {
+        cycleComplete = true;
+      }
+
+      // Limitar el número de puntos en el gráfico
+      //if (positions.length > graphWidth) positions.shift();
+
+      // Dibujar el gráfico
+      drawGraph();
     }
-    endShape();
 
-    // Etiqueta del eje Y (Posición)
-    textSize(12);
-    fill(0);
-    textAlign(CENTER, CENTER);
-    text("Posición", graphX - 30, graphY + graphHeight / 2);
-  }
-</script>
+    function drawGraph() {
+      // Posición y tamaño del gráfico
+      let graphX = width - graphWidth - 20;
+      let graphY = height - graphHeight - 20;
+
+      // Dibujar los ejes
+      stroke(0);
+      line(graphX, graphY, graphX, graphY + graphHeight); // Eje Y
+      line(graphX, graphY + graphHeight, graphX + graphWidth, graphY + graphHeight); // Eje X
+
+      // Dibujar la línea del gráfico
+      noFill();
+      beginShape();
+      for (let i = 0; i < positions.length; i++) {
+        let px = map(positions[i].time, 0, positions[positions.length - 1].time, graphX, graphX + graphWidth);
+        let py = map(positions[i].pos, 0, width, graphY + graphHeight, graphY);
+        vertex(px, py);
+      }
+      endShape();
+
+      // Etiqueta del eje Y (Posición)
+      textSize(12);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      text("Posición", graphX - 30, graphY + graphHeight / 2);
+    }
+  </script>
+</div>
 </section>
 <section id="aceleración" class="level2">
 <h2 class="anchored" data-anchor-id="aceleración">Aceleración</h2>
