@@ -214,9 +214,91 @@ window.Quarto = {
 \]</span></p>
 <p>Lo anterior se define como velocidad media, dado que entre el instante <span class="math inline">\(t_1\)</span> y el instante <span class="math inline">\(t_2\)</span> pudieron existir diversos cambios de velocidad que no se contemplan en la ecuación anterior.</p>
 <p>Para tener información de la velocidad durante todo el tiempo, al saber cómo varía la posición <span class="math inline">\(\vec{r}\)</span> respecto al tiempo <span class="math inline">\(t\)</span>, esto se logra mediante el cálculo diferencial. Es decir, la <strong>velocidad instantánea</strong>, o simplemente velocidad, se define como:</p>
-<p><span class="math display">\[
+<span class="math display">\[
 \vec{v} := \lim_{\Delta t \rightarrow 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d\vec{r}}{dt}
-\]</span></p>
+\]</span> A continuación se muestra una simulación del movimiento rectilineo de una partícula, junto a su grafico de posición vs velocidad.
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<script>
+  let x = 50, y = 200;
+  let vx = 2, r = 20;
+  let time = 0;
+  let positions = [];
+  let graphWidth = 300, graphHeight = 150;
+  let cycleCount = 0;
+  let maxCycles = 3;
+  let pointsLimit = 100; // Número de puntos en el gráfico
+  let startX = 50;
+  let interval = 1; // Intervalo de tiempo para suavizar el gráfico sin alterar el movimiento
+
+  function setup() {
+    createCanvas(800, 400);
+    background(220);
+  }
+
+  function draw() {
+    background(220);
+
+    // Mover la partícula
+    x += vx;
+    if (x > width - r || x < 0 + r) vx *= -1;
+
+    // Dibujar la partícula
+    fill(255, 0, 0);
+    ellipse(x, y, r, r);
+
+    // Actualizar el gráfico de posición vs. tiempo
+    time += interval; // Aumentar el intervalo de tiempo sin alterar el movimiento real
+    positions.push({time, pos: x});
+
+    // Si la partícula completa una oscilación (vuelve a la posición inicial), contar el ciclo
+    if (x === startX) {
+      cycleCount++;
+      if (cycleCount >= maxCycles) {
+        positions = [];  // Reiniciar gráfico
+        cycleCount = 0;  // Reiniciar contador de ciclos
+      }
+    }
+
+    // Limitar el número de puntos en el gráfico
+    if (positions.length > pointsLimit) positions.shift();
+
+    // Dibujar el gráfico
+    drawGraph();
+  }
+
+  function drawGraph() {
+    // Posición y tamaño del gráfico
+    let graphX = width - graphWidth - 20;
+    let graphY = height - graphHeight - 20;
+
+    // Dibujar los ejes
+    stroke(0);
+    line(graphX, graphY, graphX, graphY + graphHeight); // Eje Y
+    line(graphX, graphY + graphHeight, graphX + graphWidth, graphY + graphHeight); // Eje X
+
+    // Dibujar la línea del gráfico
+    noFill();
+    beginShape();
+    for (let i = 0; i < positions.length; i++) {
+      let px = map(i, 0, positions.length - 1, graphX, graphX + graphWidth); // Distribuir puntos en el eje X
+      let py = map(positions[i].pos, 0, width, graphY + graphHeight, graphY); // Mapear la posición de la partícula en el eje Y
+      vertex(px, py);
+    }
+    endShape();
+
+    // Etiqueta del eje Y (Posición)
+    textSize(12);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("Posición", graphX - 30, graphY - 10); // Mover la etiqueta arriba del eje Y
+
+    // Etiqueta del eje X (Tiempo)
+    textSize(12);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("Tiempo", graphX + graphWidth / 2, graphY + graphHeight + 15); // Etiqueta para el eje X
+  }
+</script>
 </section>
 <section id="aceleración" class="level2">
 <h2 class="anchored" data-anchor-id="aceleración">Aceleración</h2>
@@ -295,33 +377,6 @@ window.Quarto = {
 \end{aligned}
 \]</span></p>
 <p>Las incógnitas (cantidades desconocidas, no entregadas en el enunciado) son <span class="math inline">\(r_x\)</span>, <span class="math inline">\(t_1\)</span>, <span class="math inline">\(v_y\)</span>, <span class="math inline">\(a_x\)</span>. Al ser 4 incógnitas y 4 ecuaciones, es posible resolver el sistema y encontrar el valor de cualquiera de las 4 incógnitas en función de cantidades conocidas.</p>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-<script>
-  let x = 50, y = 200;
-  let vx = 2, vy = 0;
-  let ax = 0, ay = 0.1;
-
-  function setup() {
-    createCanvas(600, 400);
-    background(220);
-  }
-
-  function draw() {
-    background(220);
-    x += vx;
-    y += vy;
-    vy += ay;
-
-    if (x > width || x < 0) vx *= -1;
-    if (y > height) {
-      y = height;
-      vy *= -0.8;
-    }
-
-    fill(255, 0, 0);
-    ellipse(x, y, 20, 20);
-  }
-</script>
 
 
 </section>

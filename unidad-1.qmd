@@ -34,82 +34,88 @@ $$
 \vec{v} := \lim_{\Delta t \rightarrow 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d\vec{r}}{dt}
 $$
 A continuación se muestra una simulación del movimiento rectilineo de una partícula, junto a su grafico de posición vs velocidad.
-<div id="animation-container">
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script>
-    let x = 20, y = 70;
-    let vx = 2, r = 20;
-    let time = 0;
-    let positions = [];
-    let graphWidth = 300, graphHeight = 150;
-    let cycleComplete = false;
-    let startX = 50;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<script>
+  let x = 50, y = 200;
+  let vx = 2, r = 20;
+  let time = 0;
+  let positions = [];
+  let graphWidth = 300, graphHeight = 150;
+  let cycleCount = 0;
+  let maxCycles = 3;
+  let pointsLimit = 100; // Número de puntos en el gráfico
+  let startX = 50;
+  let interval = 1; // Intervalo de tiempo para suavizar el gráfico sin alterar el movimiento
 
-    function setup() {
-      let canvas = createCanvas(graphWidth, graphHeight); // Ajuste dinámico según el tamaño de la ventana
-      canvas.parent('animation-container'); // Coloca el lienzo dentro del contenedor
-      background(220);
+  function setup() {
+    createCanvas(800, 400);
+    background(220);
+  }
+
+  function draw() {
+    background(220);
+
+    // Mover la partícula
+    x += vx;
+    if (x > width - r || x < 0 + r) vx *= -1;
+
+    // Dibujar la partícula
+    fill(255, 0, 0);
+    ellipse(x, y, r, r);
+
+    // Actualizar el gráfico de posición vs. tiempo
+    time += interval; // Aumentar el intervalo de tiempo sin alterar el movimiento real
+    positions.push({time, pos: x});
+
+    // Si la partícula completa una oscilación (vuelve a la posición inicial), contar el ciclo
+    if (x === startX) {
+      cycleCount++;
+      if (cycleCount >= maxCycles) {
+        positions = [];  // Reiniciar gráfico
+        cycleCount = 0;  // Reiniciar contador de ciclos
+      }
     }
 
-    function draw() {
-      background(220);
+    // Limitar el número de puntos en el gráfico
+    if (positions.length > pointsLimit) positions.shift();
 
-      // Mover la partícula
-      x += vx;
-      if (x > width - r || x < 0 + r) vx *= -1;
+    // Dibujar el gráfico
+    drawGraph();
+  }
 
-      // Dibujar la partícula
-      fill(255, 0, 0);
-      ellipse(x, y, r, r);
+  function drawGraph() {
+    // Posición y tamaño del gráfico
+    let graphX = width - graphWidth - 20;
+    let graphY = height - graphHeight - 20;
 
-      // Actualizar el gráfico de posición vs. tiempo
-      time += 1;
-      positions.push({time, pos: x});
+    // Dibujar los ejes
+    stroke(0);
+    line(graphX, graphY, graphX, graphY + graphHeight); // Eje Y
+    line(graphX, graphY + graphHeight, graphX + graphWidth, graphY + graphHeight); // Eje X
 
-      // Si la partícula completa una oscilación (vuelve a la posición inicial), reiniciar
-      if (x === startX && cycleComplete) {
-        cycleComplete = false;
-      }
-      if (x === startX && !cycleComplete) {
-        cycleComplete = true;
-      }
-
-      // Limitar el número de puntos en el gráfico
-      //if (positions.length > graphWidth) positions.shift();
-
-      // Dibujar el gráfico
-      drawGraph();
+    // Dibujar la línea del gráfico
+    noFill();
+    beginShape();
+    for (let i = 0; i < positions.length; i++) {
+      let px = map(i, 0, positions.length - 1, graphX, graphX + graphWidth); // Distribuir puntos en el eje X
+      let py = map(positions[i].pos, 0, width, graphY + graphHeight, graphY); // Mapear la posición de la partícula en el eje Y
+      vertex(px, py);
     }
+    endShape();
 
-    function drawGraph() {
-      // Posición y tamaño del gráfico
-      let graphX = width - graphWidth - 20;
-      let graphY = height - graphHeight - 20;
+    // Etiqueta del eje Y (Posición)
+    textSize(12);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("Posición", graphX - 30, graphY - 10); // Mover la etiqueta arriba del eje Y
 
-      // Dibujar los ejes
-      stroke(0);
-      line(graphX, graphY, graphX, graphY + graphHeight); // Eje Y
-      line(graphX, graphY + graphHeight, graphX + graphWidth, graphY + graphHeight); // Eje X
-
-      // Dibujar la línea del gráfico
-      noFill();
-      beginShape();
-      for (let i = 0; i < positions.length; i++) {
-        let px = map(positions[i].time, 0, positions[positions.length - 1].time, graphX, graphX + graphWidth);
-        let py = map(positions[i].pos, 0, width, graphY + graphHeight, graphY);
-        vertex(px, py);
-      }
-      endShape();
-
-      // Etiqueta del eje Y (Posición)
-      textSize(12);
-      fill(0);
-      textAlign(CENTER, CENTER);
-      text("Posición", graphX - 30, graphY + graphHeight / 2);
-    }
-  </script>
-</div>
+    // Etiqueta del eje X (Tiempo)
+    textSize(12);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("Tiempo", graphX + graphWidth / 2, graphY + graphHeight + 15); // Etiqueta para el eje X
+  }
+</script>
 
 ## Aceleración
 
