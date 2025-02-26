@@ -47,7 +47,7 @@ A continuación se muestra una simulación del movimiento rectilineo de una part
     let startX = 50;
 
     function setup() {
-      let canvas = createCanvas(windowWidth * 0.4, windowHeight * 0.4); // Ajuste dinámico según el tamaño de la ventana
+      let canvas = createCanvas(graphWidth, graphHeight); // Ajuste dinámico según el tamaño de la ventana
       canvas.parent('animation-container'); // Coloca el lienzo dentro del contenedor
       background(220);
     }
