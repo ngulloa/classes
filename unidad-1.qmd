@@ -34,88 +34,6 @@ $$
 \vec{v} := \lim_{\Delta t \rightarrow 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d\vec{r}}{dt}
 $$
 A continuación se muestra una simulación del movimiento rectilineo de una partícula, junto a su grafico de posición vs velocidad.
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-<script>
-  let x = 50, y = 200;
-  let vx = 2, r = 20;
-  let time = 0;
-  let positions = [];
-  let graphWidth = 300, graphHeight = 150;
-  let cycleCount = 0;
-  let maxCycles = 3;
-  let pointsLimit = 100; // Número de puntos en el gráfico
-  let startX = 50;
-  let interval = 1; // Intervalo de tiempo para suavizar el gráfico sin alterar el movimiento
-
-  function setup() {
-    createCanvas(800, 400);
-    background(220);
-  }
-
-  function draw() {
-    background(220);
-
-    // Mover la partícula
-    x += vx;
-    if (x > width - r || x < 0 + r) vx *= -1;
-
-    // Dibujar la partícula
-    fill(255, 0, 0);
-    ellipse(x, y, r, r);
-
-    // Actualizar el gráfico de posición vs. tiempo
-    time += interval; // Aumentar el intervalo de tiempo sin alterar el movimiento real
-    positions.push({time, pos: x});
-
-    // Si la partícula completa una oscilación (vuelve a la posición inicial), contar el ciclo
-    if (x === startX) {
-      cycleCount++;
-      if (cycleCount >= maxCycles) {
-        positions = [];  // Reiniciar gráfico
-        cycleCount = 0;  // Reiniciar contador de ciclos
-      }
-    }
-
-    // Limitar el número de puntos en el gráfico
-    if (positions.length > pointsLimit) positions.shift();
-
-    // Dibujar el gráfico
-    drawGraph();
-  }
-
-  function drawGraph() {
-    // Posición y tamaño del gráfico
-    let graphX = width - graphWidth - 20;
-    let graphY = height - graphHeight - 20;
-
-    // Dibujar los ejes
-    stroke(0);
-    line(graphX, graphY, graphX, graphY + graphHeight); // Eje Y
-    line(graphX, graphY + graphHeight, graphX + graphWidth, graphY + graphHeight); // Eje X
-
-    // Dibujar la línea del gráfico
-    noFill();
-    beginShape();
-    for (let i = 0; i < positions.length; i++) {
-      let px = map(i, 0, positions.length - 1, graphX, graphX + graphWidth); // Distribuir puntos en el eje X
-      let py = map(positions[i].pos, 0, width, graphY + graphHeight, graphY); // Mapear la posición de la partícula en el eje Y
-      vertex(px, py);
-    }
-    endShape();
-
-    // Etiqueta del eje Y (Posición)
-    textSize(12);
-    fill(0);
-    textAlign(CENTER, CENTER);
-    text("Posición", graphX - 30, graphY - 10); // Mover la etiqueta arriba del eje Y
-
-    // Etiqueta del eje X (Tiempo)
-    textSize(12);
-    fill(0);
-    textAlign(CENTER, CENTER);
-    text("Tiempo", graphX + graphWidth / 2, graphY + graphHeight + 15); // Etiqueta para el eje X
-  }
-</script>
 
 ## Aceleración
 
@@ -208,3 +126,84 @@ $$
 $$
 
 Las incógnitas (cantidades desconocidas, no entregadas en el enunciado) son $r_x$, $t_1$, $v_y$, $a_x$. Al ser 4 incógnitas y 4 ecuaciones, es posible resolver el sistema y encontrar el valor de cualquiera de las 4 incógnitas en función de cantidades conocidas.
+
+# Coordenadas Polares
+
+Las coordenadas polares son un sistema de coordenadas bidimensional que permite localizar cualquier punto en el plano a través de un ángulo y una distancia. De esta forma, se define un **vector posición** $\vec{r}=(r,\theta)$ en que $r$ es la distancia desde el origen (o polo) al punto de interés y $\theta$ es el ángulo que se forma entre el eje horizontal (o eje polar) y el punto de interés.
+
+## Conversión entre coordenadas cartesianas y polares
+
+Por trigonometría se tienen las siguientes conversiones entre coordenadas cartesianas y polares[^1]:
+
+$$
+    x=r \cdot \cos(\theta) \quad y=r \cdot \sin(\theta) \quad r=\sqrt{x^2 + y^2} \quad \theta=\arctan{\frac{y}{x}}
+$$
+
+[^1]: No siempre es cierto que $\theta = \arctan{\frac{y}{x}}$, depende del intervalo.
+
+## Vectores unitarios en coordenadas polares
+
+En las coordenadas cartesianas, se tienen dos vectores unitarios para describir el plano: $\{\mathbf{\hat{i}}, \mathbf{\hat{j}}\}$, los cuales están fijos en el origen y son ortogonales. En el caso de las coordenadas polares también se tendrán dos vectores unitarios ortogonales, pero móviles, situándose siempre sobre el punto de interés.
+
+Al describir el movimiento de una partícula en coordenadas polares, se utilizan los vectores $\mathbf{\hat{r}}$ y $\mathbf{\hat{\theta}}$, definidos como:
+
+- **Vector $\mathbf{\hat{r}}$**: Tiene como dirección la línea que traza $r$ (la distancia) y sentido positivo cuando apunta fuera del origen.
+- **Vector $\mathbf{\hat{\theta}}$**: Tiene dirección perpendicular a $\mathbf{r}$ y sentido positivo cuando apunta de forma tal que $\mathbf{\theta}$ tiende a aumentar.
+
+De estas definiciones se obtienen las siguientes relaciones:
+
+$$
+    \hat{r}=\cos\theta \hat{i} + \sin{\theta}\hat{j} \quad \hat{\theta} = -\sin{\theta}\hat{i} + \cos{\theta}\hat{j}
+$$
+
+Además:
+
+$$
+    \frac{d{\hat{r}}}{d{\theta}} =  \hat{\theta} \quad \frac{d\hat{\theta}}{d\theta} = -\hat{r}
+$$
+
+## Movimiento en coordenadas polares
+
+Ahora es posible describir completamente el movimiento de una partícula en el plano. Se comienza escribiendo la ecuación de posición y luego derivando respecto al tiempo para obtener la velocidad y la aceleración:
+
+$$
+    \vec{r} = r\hat{r}
+$$
+
+$$
+    \vec{v} = \dot{r}\hat{r} + r \dot{\theta}\hat{\theta}
+$$
+
+$$
+    \vec{a} = (\ddot{r} - r \dot{\theta}^2)\hat{r} + (2\dot{r} \dot{\theta} + r \ddot{\theta})\hat{\theta}
+$$
+
+# Movimiento Relativo
+
+
+En física, para describir magnitudes y propiedades de un sistema, se debe hacer siempre respecto a un **sistema de referencia**, es decir, se utiliza un conjunto de convenciones para simplificar el entendimiento de una misma situación observada desde distintos lugares espaciales. Por esto, el movimiento de una partícula o cuerpo es siempre relativo a algún punto y, si el interés es conocer el movimiento respecto a otro cuerpo que también se está moviendo, se deben tener algunas consideraciones.
+
+Si se quiere describir la posición de un objeto $A$ respecto a un objeto $B$, el vector de posición puede ser denotado por $\vec{r}_{A/B}$ y se leerá como *la posición de $A$ respecto de $B$*, es decir, un observador en $B$ medirá una distancia $r$ entre él y $A$[^2].
+
+[^2]: Es análogo para la velocidad y aceleración.
+
+Analizando geométricamente los vectores de posición, se puede demostrar rápidamente que:
+
+$$
+    \vec{r}_{A/B}=\vec{r}_A - \vec{r}_B
+$$
+
+Donde $\vec{r}_A$ y $\vec{r}_B$ son los vectores de posición medidos desde un observador externo (típicamente, el origen del sistema de coordenadas utilizado).
+
+La relación anterior se puede derivar respecto al tiempo y obtener las ecuaciones de movimiento relativo para la velocidad y la aceleración:
+
+$$
+    \vec{v}_{A/B}=\vec{v}_A - \vec{v}_B
+$$
+
+$$
+    \vec{a}_{A/B}=\vec{a}_A - \vec{a}_B
+$$
+
+
+
