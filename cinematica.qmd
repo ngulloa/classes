@@ -1,5 +1,5 @@
 ---
-title: "Unidad 1"
+title: "Cinemática"
 author: "Nicolás Ulloa Gatica"
 format:
   html:
@@ -32,8 +32,7 @@ Para tener información de la velocidad durante todo el tiempo, al saber cómo v
 
 $$
 \vec{v} := \lim_{\Delta t \rightarrow 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d\vec{r}}{dt}
-$$
-A continuación se muestra una simulación del movimiento rectilineo de una partícula, junto a su grafico de posición vs velocidad.
+$$ A continuación se muestra una simulación del movimiento rectilineo de una partícula, junto a su grafico de posición vs velocidad.
 
 ## Aceleración
 
@@ -71,26 +70,24 @@ $$
 
 Esta ecuación es conocida como la **ecuación itinerario**, y solo aplica para los casos en los que la aceleración es constante. Sin embargo, se puede obtener, a partir del procedimiento anterior, una ecuación de movimiento para cualquier partícula a partir de su velocidad o aceleración.
 
-
-
 # Cinemática en 2 dimensiones
 
 ## Consideraciones
 
 Con una buena comprensión del movimiento unidimensional, el movimiento bi o tridimensional no presenta mayores complicaciones al tener en mente tres consideraciones:
 
-- El sistema de coordenadas es siempre ortogonal, ya sea en coordenadas cartesianas o polares. Esto implica que todo lo que sucede en una dimensión, no afecta a la otra dimensión.
-- El tiempo, para un mismo instante, es el mismo en ambas dimensiones.
-- Para cada dimensión se aplica su ecuación respectiva y si existen cantidades vectoriales, se deben descomponer en cada una de las dimensiones para realizar el análisis matemático. En el título *Conceptos previos* se encuentra información respecto a la descomposición de vectores.
+-   El sistema de coordenadas es siempre ortogonal, ya sea en coordenadas cartesianas o polares. Esto implica que todo lo que sucede en una dimensión, no afecta a la otra dimensión.
+-   El tiempo, para un mismo instante, es el mismo en ambas dimensiones.
+-   Para cada dimensión se aplica su ecuación respectiva y si existen cantidades vectoriales, se deben descomponer en cada una de las dimensiones para realizar el análisis matemático. En el título *Conceptos previos* se encuentra información respecto a la descomposición de vectores.
 
 ## Metodología para resolución de problemas
 
 Generalmente, los problemas iniciales de cinemática en 2 dimensiones conservan la misma lógica para ser resueltos. Esta lógica se puede resumir en 6 pasos:
 
-1. **Definir el origen y sistema de coordenadas** más útil. Si el problema trata de un movimiento circular, lo más probable es que sea más simple utilizar coordenadas polares.
-2. **Identificar** las cantidades conocidas y las que se piden.
-3. **Descomponer** las cantidades vectoriales en cada eje del sistema coordenado, que serán utilizadas al escribir las ecuaciones de movimiento.
-4. **Establecer las ecuaciones de movimiento** para cada eje del sistema de coordenadas. En coordenadas cartesianas, y con aceleración constante, por ejemplo, las ecuaciones serían:
+1.  **Definir el origen y sistema de coordenadas** más útil. Si el problema trata de un movimiento circular, lo más probable es que sea más simple utilizar coordenadas polares.
+2.  **Identificar** las cantidades conocidas y las que se piden.
+3.  **Descomponer** las cantidades vectoriales en cada eje del sistema coordenado, que serán utilizadas al escribir las ecuaciones de movimiento.
+4.  **Establecer las ecuaciones de movimiento** para cada eje del sistema de coordenadas. En coordenadas cartesianas, y con aceleración constante, por ejemplo, las ecuaciones serían:
 
 $$
 \vec{r}_x(t) = r_{0x} + v_{0x}\cdot t + \frac{1}{2}\cdot a_x \cdot t^2 \hspace{2cm} \vec{v}_x(t) = v_{0x} + a_x\cdot t
@@ -100,7 +97,7 @@ $$
 \vec{r}_y(t) = r_{0y} + v_{0y}\cdot t + \frac{1}{2}\cdot a_y \cdot t^2 \hspace{2cm} \vec{v}_y(t) = v_{0y} + a_y\cdot t
 $$
 
-5. **Evaluar con las cantidades conocidas** para algún instante, posición, velocidad o aceleración.
+5.  **Evaluar con las cantidades conocidas** para algún instante, posición, velocidad o aceleración.
 
 Por ejemplo, una partícula comienza a moverse desde el origen $(s_0=0)$, $(v_0=0)$. La partícula alcanza velocidad $b$ en el eje $x$ en el instante $t = t_1$ y llega a la posición $H$ en el eje $y$ para ese mismo instante. Si la aceleración en el eje $y$ es $c$, las ecuaciones serán:
 
@@ -114,7 +111,7 @@ $$
 
 Con estas relaciones ya es posible describir el movimiento completo de la partícula.
 
-6. Por último, solo queda **resolver el sistema de ecuaciones** y encontrar lo que piden en el problema. Para el ejemplo anterior, el sistema de ecuaciones en el instante $t_1$, de manera más ordenada, sería:
+6.  Por último, solo queda **resolver el sistema de ecuaciones** y encontrar lo que piden en el problema. Para el ejemplo anterior, el sistema de ecuaciones en el instante $t_1$, de manera más ordenada, sería:
 
 $$
 \begin{aligned}
@@ -135,11 +132,11 @@ Las coordenadas polares son un sistema de coordenadas bidimensional que permite 
 
 Por trigonometría se tienen las siguientes conversiones entre coordenadas cartesianas y polares[^1]:
 
+[^1]: No siempre es cierto que $\theta = \arctan{\frac{y}{x}}$, depende del intervalo.
+
 $$
     x=r \cdot \cos(\theta) \quad y=r \cdot \sin(\theta) \quad r=\sqrt{x^2 + y^2} \quad \theta=\arctan{\frac{y}{x}}
 $$
-
-[^1]: No siempre es cierto que $\theta = \arctan{\frac{y}{x}}$, depende del intervalo.
 
 ## Vectores unitarios en coordenadas polares
 
@@ -147,8 +144,8 @@ En las coordenadas cartesianas, se tienen dos vectores unitarios para describir 
 
 Al describir el movimiento de una partícula en coordenadas polares, se utilizan los vectores $\mathbf{\hat{r}}$ y $\mathbf{\hat{\theta}}$, definidos como:
 
-- **Vector $\mathbf{\hat{r}}$**: Tiene como dirección la línea que traza $r$ (la distancia) y sentido positivo cuando apunta fuera del origen.
-- **Vector $\mathbf{\hat{\theta}}$**: Tiene dirección perpendicular a $\mathbf{r}$ y sentido positivo cuando apunta de forma tal que $\mathbf{\theta}$ tiende a aumentar.
+-   **Vector** $\mathbf{\hat{r}}$: Tiene como dirección la línea que traza $r$ (la distancia) y sentido positivo cuando apunta fuera del origen.
+-   **Vector** $\mathbf{\hat{\theta}}$: Tiene dirección perpendicular a $\mathbf{r}$ y sentido positivo cuando apunta de forma tal que $\mathbf{\theta}$ tiende a aumentar.
 
 De estas definiciones se obtienen las siguientes relaciones:
 
@@ -180,10 +177,9 @@ $$
 
 # Movimiento Relativo
 
-
 En física, para describir magnitudes y propiedades de un sistema, se debe hacer siempre respecto a un **sistema de referencia**, es decir, se utiliza un conjunto de convenciones para simplificar el entendimiento de una misma situación observada desde distintos lugares espaciales. Por esto, el movimiento de una partícula o cuerpo es siempre relativo a algún punto y, si el interés es conocer el movimiento respecto a otro cuerpo que también se está moviendo, se deben tener algunas consideraciones.
 
-Si se quiere describir la posición de un objeto $A$ respecto a un objeto $B$, el vector de posición puede ser denotado por $\vec{r}_{A/B}$ y se leerá como *la posición de $A$ respecto de $B$*, es decir, un observador en $B$ medirá una distancia $r$ entre él y $A$[^2].
+Si se quiere describir la posición de un objeto $A$ respecto a un objeto $B$, el vector de posición puede ser denotado por $\vec{r}_{A/B}$ y se leerá como *la posición de* $A$ respecto de $B$, es decir, un observador en $B$ medirá una distancia $r$ entre él y $A$[^2].
 
 [^2]: Es análogo para la velocidad y aceleración.
 
@@ -204,6 +200,3 @@ $$
 $$
     \vec{a}_{A/B}=\vec{a}_A - \vec{a}_B
 $$
-
-
-

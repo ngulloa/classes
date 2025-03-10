@@ -1,114 +1,107 @@
 [
   {
+    "objectID": "ejercicios.html",
+    "href": "ejercicios.html",
+    "title": "Ejercicios",
+    "section": "",
+    "text": "Un asteroide viaja en dirección a la tierra a una velocidad constante de 60 km/s y se encuentra a una distancia \\(200 \\cdot 10^6\\) km. Según esta información,\n\n¿En cuántos días se estima que colisionará con el planeta?\nSe quiere enviar una nave para desacelerar el asteroide y lograr que éste se detenga a una distancia de 500 km respecto a la tierra, ¿Cuál es la desaceleración que la nave debe producir si el cometa se intercepta a una distancia de \\(8 \\cdot 10^6\\) km respecto a la tierra?\n\n\n\n\nUn ciclista está decendiendo por un cerro con una aceleración de 3 \\(m/s^2\\). En cierto instante, el ciclista alcanza una velocidad de 10 \\(m/s\\) y presiona los frenos. Si los frenos proporcionan una desaceleración de 1 \\(m/s^2\\), calcule:\n\n¿Cuánto tiempo tarda el ciclista en detenerse por completo, desde que presionó los frenos?\n¿Qué distancia recorre el cicista antes de detenerse por completo, desde que presionó los frenos?\nSi el ciclista quisiera reducir su velocidad a 2 \\(m/s^2\\), ¿Por cuánto tiempo debe presionar los frenos?"
+  },
+  {
+    "objectID": "ejercicios.html#ejercicio-1",
+    "href": "ejercicios.html#ejercicio-1",
+    "title": "Ejercicios",
+    "section": "",
+    "text": "Un asteroide viaja en dirección a la tierra a una velocidad constante de 60 km/s y se encuentra a una distancia \\(200 \\cdot 10^6\\) km. Según esta información,\n\n¿En cuántos días se estima que colisionará con el planeta?\nSe quiere enviar una nave para desacelerar el asteroide y lograr que éste se detenga a una distancia de 500 km respecto a la tierra, ¿Cuál es la desaceleración que la nave debe producir si el cometa se intercepta a una distancia de \\(8 \\cdot 10^6\\) km respecto a la tierra?"
+  },
+  {
+    "objectID": "ejercicios.html#ejercicio-2",
+    "href": "ejercicios.html#ejercicio-2",
+    "title": "Ejercicios",
+    "section": "",
+    "text": "Un ciclista está decendiendo por un cerro con una aceleración de 3 \\(m/s^2\\). En cierto instante, el ciclista alcanza una velocidad de 10 \\(m/s\\) y presiona los frenos. Si los frenos proporcionan una desaceleración de 1 \\(m/s^2\\), calcule:\n\n¿Cuánto tiempo tarda el ciclista en detenerse por completo, desde que presionó los frenos?\n¿Qué distancia recorre el cicista antes de detenerse por completo, desde que presionó los frenos?\nSi el ciclista quisiera reducir su velocidad a 2 \\(m/s^2\\), ¿Por cuánto tiempo debe presionar los frenos?"
+  },
+  {
+    "objectID": "cinematica.html",
+    "href": "cinematica.html",
+    "title": "Cinemática",
+    "section": "",
+    "text": "El desplazamiento de una partícula (u objeto) se define como el cambio de posición. Si la posición inicial de la partícula está descrita por el vector \\(\\vec{r}_1\\) y la posición final corresponde a \\(\\vec{r}_2\\), entonces el desplazamiento estará dado por:\n\\[\n\\Delta \\vec{r} := \\vec{r}_2 - \\vec{r}_1\n\\]\n\n\n\nLa velocidad se define como el desplazamiento por unidad de tiempo. En otras palabras, es la razón de cambio entre la posición y el tiempo. Si una partícula se encuentra en la posición \\(\\vec{r}_1\\) en el instante \\(t_1\\) y se desplaza a la posición \\(\\vec{r}_2\\) en el instante de tiempo \\(t_2\\), su velocidad media será:\n\\[\n\\vec{v}_m := \\frac{\\vec{r}_2 - \\vec{r}_1}{t_2 - t_1} = \\frac{\\Delta \\vec{r}}{\\Delta t}\n\\]\nLo anterior se define como velocidad media, dado que entre el instante \\(t_1\\) y el instante \\(t_2\\) pudieron existir diversos cambios de velocidad que no se contemplan en la ecuación anterior.\nPara tener información de la velocidad durante todo el tiempo, al saber cómo varía la posición \\(\\vec{r}\\) respecto al tiempo \\(t\\), esto se logra mediante el cálculo diferencial. Es decir, la velocidad instantánea, o simplemente velocidad, se define como:\n\\[\n\\vec{v} := \\lim_{\\Delta t \\rightarrow 0} \\frac{\\Delta \\vec{r}}{\\Delta t} = \\frac{d\\vec{r}}{dt}\n\\] A continuación se muestra una simulación del movimiento rectilineo de una partícula, junto a su grafico de posición vs velocidad.\n\n\n\nDe forma análoga a lo anterior, la aceleración se define como el cambio de velocidad en un intervalo de tiempo. Así, la aceleración media será:\n\\[\n\\vec{a}_m := \\frac{\\vec{v}_2 - \\vec{v}_1}{t_2 - t_1} = \\frac{\\Delta \\vec{v}}{\\Delta t}\n\\]\nMientras que la aceleración instantánea, o simplemente aceleración, se define como:\n\\[\n\\vec{a} := \\lim_{\\Delta t \\rightarrow 0} \\frac{\\Delta \\vec{v}}{\\Delta t} = \\frac{d\\vec{v}}{dt}\n\\]\n\n\n\nDadas las ecuaciones anteriores, es posible encontrar ecuaciones que caractericen el movimiento de una partícula mediante la integración. Por ejemplo, para una aceleración constante se tiene:\n\\[\n\\int \\vec{a} \\, d\\tau = \\int \\frac{d\\vec{v}}{d\\tau} \\, d\\tau\n\\]\nLo que lleva a:\n\\[\n\\boxed{\\vec{v}(t) = \\vec{v}_0 + \\vec{a} \\cdot t}\n\\]\nDe igual forma, si se integra nuevamente la ecuación anterior, se obtiene:\n\\[\n\\boxed{\\vec{r}(t) = \\vec{r}_0 + \\vec{v_0} \\cdot t + \\frac{1}{2} \\vec{a} \\cdot t^2}\n\\]\nEsta ecuación es conocida como la ecuación itinerario, y solo aplica para los casos en los que la aceleración es constante. Sin embargo, se puede obtener, a partir del procedimiento anterior, una ecuación de movimiento para cualquier partícula a partir de su velocidad o aceleración."
+  },
+  {
+    "objectID": "cinematica.html#desplazamiento",
+    "href": "cinematica.html#desplazamiento",
+    "title": "Cinemática",
+    "section": "",
+    "text": "El desplazamiento de una partícula (u objeto) se define como el cambio de posición. Si la posición inicial de la partícula está descrita por el vector \\(\\vec{r}_1\\) y la posición final corresponde a \\(\\vec{r}_2\\), entonces el desplazamiento estará dado por:\n\\[\n\\Delta \\vec{r} := \\vec{r}_2 - \\vec{r}_1\n\\]"
+  },
+  {
+    "objectID": "cinematica.html#velocidad",
+    "href": "cinematica.html#velocidad",
+    "title": "Cinemática",
+    "section": "",
+    "text": "La velocidad se define como el desplazamiento por unidad de tiempo. En otras palabras, es la razón de cambio entre la posición y el tiempo. Si una partícula se encuentra en la posición \\(\\vec{r}_1\\) en el instante \\(t_1\\) y se desplaza a la posición \\(\\vec{r}_2\\) en el instante de tiempo \\(t_2\\), su velocidad media será:\n\\[\n\\vec{v}_m := \\frac{\\vec{r}_2 - \\vec{r}_1}{t_2 - t_1} = \\frac{\\Delta \\vec{r}}{\\Delta t}\n\\]\nLo anterior se define como velocidad media, dado que entre el instante \\(t_1\\) y el instante \\(t_2\\) pudieron existir diversos cambios de velocidad que no se contemplan en la ecuación anterior.\nPara tener información de la velocidad durante todo el tiempo, al saber cómo varía la posición \\(\\vec{r}\\) respecto al tiempo \\(t\\), esto se logra mediante el cálculo diferencial. Es decir, la velocidad instantánea, o simplemente velocidad, se define como:\n\\[\n\\vec{v} := \\lim_{\\Delta t \\rightarrow 0} \\frac{\\Delta \\vec{r}}{\\Delta t} = \\frac{d\\vec{r}}{dt}\n\\] A continuación se muestra una simulación del movimiento rectilineo de una partícula, junto a su grafico de posición vs velocidad."
+  },
+  {
+    "objectID": "cinematica.html#aceleración",
+    "href": "cinematica.html#aceleración",
+    "title": "Cinemática",
+    "section": "",
+    "text": "De forma análoga a lo anterior, la aceleración se define como el cambio de velocidad en un intervalo de tiempo. Así, la aceleración media será:\n\\[\n\\vec{a}_m := \\frac{\\vec{v}_2 - \\vec{v}_1}{t_2 - t_1} = \\frac{\\Delta \\vec{v}}{\\Delta t}\n\\]\nMientras que la aceleración instantánea, o simplemente aceleración, se define como:\n\\[\n\\vec{a} := \\lim_{\\Delta t \\rightarrow 0} \\frac{\\Delta \\vec{v}}{\\Delta t} = \\frac{d\\vec{v}}{dt}\n\\]"
+  },
+  {
+    "objectID": "cinematica.html#ecuaciones-de-movimiento",
+    "href": "cinematica.html#ecuaciones-de-movimiento",
+    "title": "Cinemática",
+    "section": "",
+    "text": "Dadas las ecuaciones anteriores, es posible encontrar ecuaciones que caractericen el movimiento de una partícula mediante la integración. Por ejemplo, para una aceleración constante se tiene:\n\\[\n\\int \\vec{a} \\, d\\tau = \\int \\frac{d\\vec{v}}{d\\tau} \\, d\\tau\n\\]\nLo que lleva a:\n\\[\n\\boxed{\\vec{v}(t) = \\vec{v}_0 + \\vec{a} \\cdot t}\n\\]\nDe igual forma, si se integra nuevamente la ecuación anterior, se obtiene:\n\\[\n\\boxed{\\vec{r}(t) = \\vec{r}_0 + \\vec{v_0} \\cdot t + \\frac{1}{2} \\vec{a} \\cdot t^2}\n\\]\nEsta ecuación es conocida como la ecuación itinerario, y solo aplica para los casos en los que la aceleración es constante. Sin embargo, se puede obtener, a partir del procedimiento anterior, una ecuación de movimiento para cualquier partícula a partir de su velocidad o aceleración."
+  },
+  {
+    "objectID": "cinematica.html#consideraciones",
+    "href": "cinematica.html#consideraciones",
+    "title": "Cinemática",
+    "section": "Consideraciones",
+    "text": "Consideraciones\nCon una buena comprensión del movimiento unidimensional, el movimiento bi o tridimensional no presenta mayores complicaciones al tener en mente tres consideraciones:\n\nEl sistema de coordenadas es siempre ortogonal, ya sea en coordenadas cartesianas o polares. Esto implica que todo lo que sucede en una dimensión, no afecta a la otra dimensión.\nEl tiempo, para un mismo instante, es el mismo en ambas dimensiones.\nPara cada dimensión se aplica su ecuación respectiva y si existen cantidades vectoriales, se deben descomponer en cada una de las dimensiones para realizar el análisis matemático. En el título Conceptos previos se encuentra información respecto a la descomposición de vectores."
+  },
+  {
+    "objectID": "cinematica.html#metodología-para-resolución-de-problemas",
+    "href": "cinematica.html#metodología-para-resolución-de-problemas",
+    "title": "Cinemática",
+    "section": "Metodología para resolución de problemas",
+    "text": "Metodología para resolución de problemas\nGeneralmente, los problemas iniciales de cinemática en 2 dimensiones conservan la misma lógica para ser resueltos. Esta lógica se puede resumir en 6 pasos:\n\nDefinir el origen y sistema de coordenadas más útil. Si el problema trata de un movimiento circular, lo más probable es que sea más simple utilizar coordenadas polares.\nIdentificar las cantidades conocidas y las que se piden.\nDescomponer las cantidades vectoriales en cada eje del sistema coordenado, que serán utilizadas al escribir las ecuaciones de movimiento.\nEstablecer las ecuaciones de movimiento para cada eje del sistema de coordenadas. En coordenadas cartesianas, y con aceleración constante, por ejemplo, las ecuaciones serían:\n\n\\[\n\\vec{r}_x(t) = r_{0x} + v_{0x}\\cdot t + \\frac{1}{2}\\cdot a_x \\cdot t^2 \\hspace{2cm} \\vec{v}_x(t) = v_{0x} + a_x\\cdot t\n\\]\n\\[\n\\vec{r}_y(t) = r_{0y} + v_{0y}\\cdot t + \\frac{1}{2}\\cdot a_y \\cdot t^2 \\hspace{2cm} \\vec{v}_y(t) = v_{0y} + a_y\\cdot t\n\\]\n\nEvaluar con las cantidades conocidas para algún instante, posición, velocidad o aceleración.\n\nPor ejemplo, una partícula comienza a moverse desde el origen \\((s_0=0)\\), \\((v_0=0)\\). La partícula alcanza velocidad \\(b\\) en el eje \\(x\\) en el instante \\(t = t_1\\) y llega a la posición \\(H\\) en el eje \\(y\\) para ese mismo instante. Si la aceleración en el eje \\(y\\) es \\(c\\), las ecuaciones serán:\n\\[\n\\vec{r}_x(t_1) = \\frac{1}{2}\\cdot a_x \\cdot t_1^2 \\hspace{2cm} \\vec{v}_x(t_1) = b = a_x\\cdot t_1\n\\]\n\\[\n\\vec{r}_y(t_1) = H = \\frac{1}{2}\\cdot c \\cdot t_1^2 \\hspace{2cm} \\vec{v}_y(t_1) = c\\cdot t_1\n\\]\nCon estas relaciones ya es posible describir el movimiento completo de la partícula.\n\nPor último, solo queda resolver el sistema de ecuaciones y encontrar lo que piden en el problema. Para el ejemplo anterior, el sistema de ecuaciones en el instante \\(t_1\\), de manera más ordenada, sería:\n\n\\[\n\\begin{aligned}\n&r_x = \\frac{1}{2} \\cdot a_x \\cdot t_1^2\\\\\n&b=a_x\\cdot t_1\\\\\n&H=\\frac{1}{2} \\cdot c \\cdot t_1^2\\\\\n&v_y = c\\cdot t_1\n\\end{aligned}\n\\]\nLas incógnitas (cantidades desconocidas, no entregadas en el enunciado) son \\(r_x\\), \\(t_1\\), \\(v_y\\), \\(a_x\\). Al ser 4 incógnitas y 4 ecuaciones, es posible resolver el sistema y encontrar el valor de cualquiera de las 4 incógnitas en función de cantidades conocidas."
+  },
+  {
+    "objectID": "cinematica.html#conversión-entre-coordenadas-cartesianas-y-polares",
+    "href": "cinematica.html#conversión-entre-coordenadas-cartesianas-y-polares",
+    "title": "Cinemática",
+    "section": "Conversión entre coordenadas cartesianas y polares",
+    "text": "Conversión entre coordenadas cartesianas y polares\nPor trigonometría se tienen las siguientes conversiones entre coordenadas cartesianas y polares1:\n\\[\n    x=r \\cdot \\cos(\\theta) \\quad y=r \\cdot \\sin(\\theta) \\quad r=\\sqrt{x^2 + y^2} \\quad \\theta=\\arctan{\\frac{y}{x}}\n\\]"
+  },
+  {
+    "objectID": "cinematica.html#vectores-unitarios-en-coordenadas-polares",
+    "href": "cinematica.html#vectores-unitarios-en-coordenadas-polares",
+    "title": "Cinemática",
+    "section": "Vectores unitarios en coordenadas polares",
+    "text": "Vectores unitarios en coordenadas polares\nEn las coordenadas cartesianas, se tienen dos vectores unitarios para describir el plano: \\(\\{\\mathbf{\\hat{i}}, \\mathbf{\\hat{j}}\\}\\), los cuales están fijos en el origen y son ortogonales. En el caso de las coordenadas polares también se tendrán dos vectores unitarios ortogonales, pero móviles, situándose siempre sobre el punto de interés.\nAl describir el movimiento de una partícula en coordenadas polares, se utilizan los vectores \\(\\mathbf{\\hat{r}}\\) y \\(\\mathbf{\\hat{\\theta}}\\), definidos como:\n\nVector \\(\\mathbf{\\hat{r}}\\): Tiene como dirección la línea que traza \\(r\\) (la distancia) y sentido positivo cuando apunta fuera del origen.\nVector \\(\\mathbf{\\hat{\\theta}}\\): Tiene dirección perpendicular a \\(\\mathbf{r}\\) y sentido positivo cuando apunta de forma tal que \\(\\mathbf{\\theta}\\) tiende a aumentar.\n\nDe estas definiciones se obtienen las siguientes relaciones:\n\\[\n    \\hat{r}=\\cos\\theta \\hat{i} + \\sin{\\theta}\\hat{j} \\quad \\hat{\\theta} = -\\sin{\\theta}\\hat{i} + \\cos{\\theta}\\hat{j}\n\\]\nAdemás:\n\\[\n    \\frac{d{\\hat{r}}}{d{\\theta}} =  \\hat{\\theta} \\quad \\frac{d\\hat{\\theta}}{d\\theta} = -\\hat{r}\n\\]"
+  },
+  {
+    "objectID": "cinematica.html#movimiento-en-coordenadas-polares",
+    "href": "cinematica.html#movimiento-en-coordenadas-polares",
+    "title": "Cinemática",
+    "section": "Movimiento en coordenadas polares",
+    "text": "Movimiento en coordenadas polares\nAhora es posible describir completamente el movimiento de una partícula en el plano. Se comienza escribiendo la ecuación de posición y luego derivando respecto al tiempo para obtener la velocidad y la aceleración:\n\\[\n    \\vec{r} = r\\hat{r}\n\\]\n\\[\n    \\vec{v} = \\dot{r}\\hat{r} + r \\dot{\\theta}\\hat{\\theta}\n\\]\n\\[\n    \\vec{a} = (\\ddot{r} - r \\dot{\\theta}^2)\\hat{r} + (2\\dot{r} \\dot{\\theta} + r \\ddot{\\theta})\\hat{\\theta}\n\\]"
+  },
+  {
+    "objectID": "cinematica.html#footnotes",
+    "href": "cinematica.html#footnotes",
+    "title": "Cinemática",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nNo siempre es cierto que \\(\\theta = \\arctan{\\frac{y}{x}}\\), depende del intervalo.↩︎\nEs análogo para la velocidad y aceleración.↩︎"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Inicio",
     "section": "",
     "text": "Este es un espacio libre y gratuito donde encontrarás una amplia variedad de recursos, incluyendo información teórica, ejercicios resueltos y simulaciones interactivas."
-  },
-  {
-    "objectID": "unidad-1.html",
-    "href": "unidad-1.html",
-    "title": "Unidad 1",
-    "section": "",
-    "text": "El desplazamiento de una partícula (u objeto) se define como el cambio de posición. Si la posición inicial de la partícula está descrita por el vector \\(\\vec{r}_1\\) y la posición final corresponde a \\(\\vec{r}_2\\), entonces el desplazamiento estará dado por:\n\\[\n\\Delta \\vec{r} := \\vec{r}_2 - \\vec{r}_1\n\\]\n\n\n\nLa velocidad se define como el desplazamiento por unidad de tiempo. En otras palabras, es la razón de cambio entre la posición y el tiempo. Si una partícula se encuentra en la posición \\(\\vec{r}_1\\) en el instante \\(t_1\\) y se desplaza a la posición \\(\\vec{r}_2\\) en el instante de tiempo \\(t_2\\), su velocidad media será:\n\\[\n\\vec{v}_m := \\frac{\\vec{r}_2 - \\vec{r}_1}{t_2 - t_1} = \\frac{\\Delta \\vec{r}}{\\Delta t}\n\\]\nLo anterior se define como velocidad media, dado que entre el instante \\(t_1\\) y el instante \\(t_2\\) pudieron existir diversos cambios de velocidad que no se contemplan en la ecuación anterior.\nPara tener información de la velocidad durante todo el tiempo, al saber cómo varía la posición \\(\\vec{r}\\) respecto al tiempo \\(t\\), esto se logra mediante el cálculo diferencial. Es decir, la velocidad instantánea, o simplemente velocidad, se define como:\n\\[\n\\vec{v} := \\lim_{\\Delta t \\rightarrow 0} \\frac{\\Delta \\vec{r}}{\\Delta t} = \\frac{d\\vec{r}}{dt}\n\\] A continuación se muestra una simulación del movimiento rectilineo de una partícula, junto a su grafico de posición vs velocidad.\n\n\n\nDe forma análoga a lo anterior, la aceleración se define como el cambio de velocidad en un intervalo de tiempo. Así, la aceleración media será:\n\\[\n\\vec{a}_m := \\frac{\\vec{v}_2 - \\vec{v}_1}{t_2 - t_1} = \\frac{\\Delta \\vec{v}}{\\Delta t}\n\\]\nMientras que la aceleración instantánea, o simplemente aceleración, se define como:\n\\[\n\\vec{a} := \\lim_{\\Delta t \\rightarrow 0} \\frac{\\Delta \\vec{v}}{\\Delta t} = \\frac{d\\vec{v}}{dt}\n\\]\n\n\n\nDadas las ecuaciones anteriores, es posible encontrar ecuaciones que caractericen el movimiento de una partícula mediante la integración. Por ejemplo, para una aceleración constante se tiene:\n\\[\n\\int \\vec{a} \\, d\\tau = \\int \\frac{d\\vec{v}}{d\\tau} \\, d\\tau\n\\]\nLo que lleva a:\n\\[\n\\boxed{\\vec{v}(t) = \\vec{v}_0 + \\vec{a} \\cdot t}\n\\]\nDe igual forma, si se integra nuevamente la ecuación anterior, se obtiene:\n\\[\n\\boxed{\\vec{r}(t) = \\vec{r}_0 + \\vec{v_0} \\cdot t + \\frac{1}{2} \\vec{a} \\cdot t^2}\n\\]\nEsta ecuación es conocida como la ecuación itinerario, y solo aplica para los casos en los que la aceleración es constante. Sin embargo, se puede obtener, a partir del procedimiento anterior, una ecuación de movimiento para cualquier partícula a partir de su velocidad o aceleración."
-  },
-  {
-    "objectID": "unidad-1.html#velocidad",
-    "href": "unidad-1.html#velocidad",
-    "title": "Unidad 1",
-    "section": "",
-    "text": "La velocidad se define como el desplazamiento por unidad de tiempo. En otras palabras, es la razón de cambio entre la posición y el tiempo. Si una partícula se encuentra en la posición \\(\\vec{r}_1\\) en el instante \\(t_1\\) y se desplaza a la posición \\(\\vec{r}_2\\) en el instante de tiempo \\(t_2\\), su velocidad media será:\n\\[\n\\vec{v}_m := \\frac{\\vec{r}_2 - \\vec{r}_1}{t_2 - t_1} = \\frac{\\Delta \\vec{r}}{\\Delta t}\n\\]\nLo anterior se define como velocidad media, dado que entre el instante \\(t_1\\) y el instante \\(t_2\\) pudieron existir diversos cambios de velocidad que no se contemplan en la ecuación anterior.\nPara tener información de la velocidad durante todo el tiempo, al saber cómo varía la posición \\(\\vec{r}\\) respecto al tiempo \\(t\\), esto se logra mediante el cálculo diferencial. Es decir, la velocidad instantánea, o simplemente velocidad, se define como:\n\\[\n\\vec{v} := \\lim_{\\Delta t \\rightarrow 0} \\frac{\\Delta \\vec{r}}{\\Delta t} = \\frac{d\\vec{r}}{dt}\n\\] A continuación se muestra una simulación del movimiento rectilineo de una partícula, junto a su grafico de posición vs velocidad."
-  },
-  {
-    "objectID": "unidad-1.html#aceleración",
-    "href": "unidad-1.html#aceleración",
-    "title": "Unidad 1",
-    "section": "",
-    "text": "De forma análoga a lo anterior, la aceleración se define como el cambio de velocidad en un intervalo de tiempo. Así, la aceleración media será:\n\\[\n\\vec{a}_m := \\frac{\\vec{v}_2 - \\vec{v}_1}{t_2 - t_1} = \\frac{\\Delta \\vec{v}}{\\Delta t}\n\\]\nMientras que la aceleración instantánea, o simplemente aceleración, se define como:\n\\[\n\\vec{a} := \\lim_{\\Delta t \\rightarrow 0} \\frac{\\Delta \\vec{v}}{\\Delta t} = \\frac{d\\vec{v}}{dt}\n\\]"
-  },
-  {
-    "objectID": "unidad-1.html#ecuaciones-de-movimiento",
-    "href": "unidad-1.html#ecuaciones-de-movimiento",
-    "title": "Unidad 1",
-    "section": "",
-    "text": "Dadas las ecuaciones anteriores, es posible encontrar ecuaciones que caractericen el movimiento de una partícula mediante la integración. Por ejemplo, para una aceleración constante se tiene:\n\\[\n\\int \\vec{a} \\, d\\tau = \\int \\frac{d\\vec{v}}{d\\tau} \\, d\\tau\n\\]\nLo que lleva a:\n\\[\n\\boxed{\\vec{v}(t) = \\vec{v}_0 + \\vec{a} \\cdot t}\n\\]\nDe igual forma, si se integra nuevamente la ecuación anterior, se obtiene:\n\\[\n\\boxed{\\vec{r}(t) = \\vec{r}_0 + \\vec{v_0} \\cdot t + \\frac{1}{2} \\vec{a} \\cdot t^2}\n\\]\nEsta ecuación es conocida como la ecuación itinerario, y solo aplica para los casos en los que la aceleración es constante. Sin embargo, se puede obtener, a partir del procedimiento anterior, una ecuación de movimiento para cualquier partícula a partir de su velocidad o aceleración."
-  },
-  {
-    "objectID": "unidad-1.html#desplazamiento",
-    "href": "unidad-1.html#desplazamiento",
-    "title": "Unidad 1",
-    "section": "",
-    "text": "El desplazamiento de una partícula (u objeto) se define como el cambio de posición. Si la posición inicial de la partícula está descrita por el vector \\(\\vec{r}_1\\) y la posición final corresponde a \\(\\vec{r}_2\\), entonces el desplazamiento estará dado por:\n\\[\n\\Delta \\vec{r} := \\vec{r}_2 - \\vec{r}_1\n\\]"
-  },
-  {
-    "objectID": "unidad-1.html#simulación-de-movimiento",
-    "href": "unidad-1.html#simulación-de-movimiento",
-    "title": "Fundamentos de Cinemática",
-    "section": "",
-    "text": "A continuación, se muestra una simulación de caída libre en tiempo real.\nimport numpy as np import matplotlib.pyplot as plt from matplotlib.animation import FuncAnimation"
-  },
-  {
-    "objectID": "unidad-1.html#consideraciones",
-    "href": "unidad-1.html#consideraciones",
-    "title": "Unidad 1",
-    "section": "Consideraciones",
-    "text": "Consideraciones\nCon una buena comprensión del movimiento unidimensional, el movimiento bi o tridimensional no presenta mayores complicaciones al tener en mente tres consideraciones:\n\nEl sistema de coordenadas es siempre ortogonal, ya sea en coordenadas cartesianas o polares. Esto implica que todo lo que sucede en una dimensión, no afecta a la otra dimensión.\nEl tiempo, para un mismo instante, es el mismo en ambas dimensiones.\nPara cada dimensión se aplica su ecuación respectiva y si existen cantidades vectoriales, se deben descomponer en cada una de las dimensiones para realizar el análisis matemático. En el título Conceptos previos se encuentra información respecto a la descomposición de vectores."
-  },
-  {
-    "objectID": "unidad-1.html#metodología-para-resolución-de-problemas",
-    "href": "unidad-1.html#metodología-para-resolución-de-problemas",
-    "title": "Unidad 1",
-    "section": "Metodología para resolución de problemas",
-    "text": "Metodología para resolución de problemas\nGeneralmente, los problemas iniciales de cinemática en 2 dimensiones conservan la misma lógica para ser resueltos. Esta lógica se puede resumir en 6 pasos:\n\nDefinir el origen y sistema de coordenadas más útil. Si el problema trata de un movimiento circular, lo más probable es que sea más simple utilizar coordenadas polares.\nIdentificar las cantidades conocidas y las que se piden.\nDescomponer las cantidades vectoriales en cada eje del sistema coordenado, que serán utilizadas al escribir las ecuaciones de movimiento.\nEstablecer las ecuaciones de movimiento para cada eje del sistema de coordenadas. En coordenadas cartesianas, y con aceleración constante, por ejemplo, las ecuaciones serían:\n\n\\[\n\\vec{r}_x(t) = r_{0x} + v_{0x}\\cdot t + \\frac{1}{2}\\cdot a_x \\cdot t^2 \\hspace{2cm} \\vec{v}_x(t) = v_{0x} + a_x\\cdot t\n\\]\n\\[\n\\vec{r}_y(t) = r_{0y} + v_{0y}\\cdot t + \\frac{1}{2}\\cdot a_y \\cdot t^2 \\hspace{2cm} \\vec{v}_y(t) = v_{0y} + a_y\\cdot t\n\\]\n\nEvaluar con las cantidades conocidas para algún instante, posición, velocidad o aceleración.\n\nPor ejemplo, una partícula comienza a moverse desde el origen \\((s_0=0)\\), \\((v_0=0)\\). La partícula alcanza velocidad \\(b\\) en el eje \\(x\\) en el instante \\(t = t_1\\) y llega a la posición \\(H\\) en el eje \\(y\\) para ese mismo instante. Si la aceleración en el eje \\(y\\) es \\(c\\), las ecuaciones serán:\n\\[\n\\vec{r}_x(t_1) = \\frac{1}{2}\\cdot a_x \\cdot t_1^2 \\hspace{2cm} \\vec{v}_x(t_1) = b = a_x\\cdot t_1\n\\]\n\\[\n\\vec{r}_y(t_1) = H = \\frac{1}{2}\\cdot c \\cdot t_1^2 \\hspace{2cm} \\vec{v}_y(t_1) = c\\cdot t_1\n\\]\nCon estas relaciones ya es posible describir el movimiento completo de la partícula.\n\nPor último, solo queda resolver el sistema de ecuaciones y encontrar lo que piden en el problema. Para el ejemplo anterior, el sistema de ecuaciones en el instante \\(t_1\\), de manera más ordenada, sería:\n\n\\[\n\\begin{aligned}\n&r_x = \\frac{1}{2} \\cdot a_x \\cdot t_1^2\\\\\n&b=a_x\\cdot t_1\\\\\n&H=\\frac{1}{2} \\cdot c \\cdot t_1^2\\\\\n&v_y = c\\cdot t_1\n\\end{aligned}\n\\]\nLas incógnitas (cantidades desconocidas, no entregadas en el enunciado) son \\(r_x\\), \\(t_1\\), \\(v_y\\), \\(a_x\\). Al ser 4 incógnitas y 4 ecuaciones, es posible resolver el sistema y encontrar el valor de cualquiera de las 4 incógnitas en función de cantidades conocidas."
-  },
-  {
-    "objectID": "unidad-1.html#conversión-entre-coordenadas-cartesianas-y-polares",
-    "href": "unidad-1.html#conversión-entre-coordenadas-cartesianas-y-polares",
-    "title": "Unidad 1",
-    "section": "Conversión entre coordenadas cartesianas y polares",
-    "text": "Conversión entre coordenadas cartesianas y polares\nPor trigonometría se tienen las siguientes conversiones entre coordenadas cartesianas y polares1:\n\\[\n    x=r \\cdot \\cos(\\theta) \\quad y=r \\cdot \\sin(\\theta) \\quad r=\\sqrt{x^2 + y^2} \\quad \\theta=\\arctan{\\frac{y}{x}}\n\\]"
-  },
-  {
-    "objectID": "unidad-1.html#vectores-unitarios-en-coordenadas-polares",
-    "href": "unidad-1.html#vectores-unitarios-en-coordenadas-polares",
-    "title": "Unidad 1",
-    "section": "Vectores unitarios en coordenadas polares",
-    "text": "Vectores unitarios en coordenadas polares\nEn las coordenadas cartesianas, se tienen dos vectores unitarios para describir el plano: \\(\\{\\mathbf{\\hat{i}}, \\mathbf{\\hat{j}}\\}\\), los cuales están fijos en el origen y son ortogonales. En el caso de las coordenadas polares también se tendrán dos vectores unitarios ortogonales, pero móviles, situándose siempre sobre el punto de interés.\nAl describir el movimiento de una partícula en coordenadas polares, se utilizan los vectores \\(\\mathbf{\\hat{r}}\\) y \\(\\mathbf{\\hat{\\theta}}\\), definidos como:\n\nVector \\(\\mathbf{\\hat{r}}\\): Tiene como dirección la línea que traza \\(r\\) (la distancia) y sentido positivo cuando apunta fuera del origen.\nVector \\(\\mathbf{\\hat{\\theta}}\\): Tiene dirección perpendicular a \\(\\mathbf{r}\\) y sentido positivo cuando apunta de forma tal que \\(\\mathbf{\\theta}\\) tiende a aumentar.\n\nDe estas definiciones se obtienen las siguientes relaciones:\n\\[\n    \\hat{r}=\\cos\\theta \\hat{i} + \\sin{\\theta}\\hat{j} \\quad \\hat{\\theta} = -\\sin{\\theta}\\hat{i} + \\cos{\\theta}\\hat{j}\n\\]\nAdemás:\n\\[\n    \\frac{d{\\hat{r}}}{d{\\theta}} =  \\hat{\\theta} \\quad \\frac{d\\hat{\\theta}}{d\\theta} = -\\hat{r}\n\\]"
-  },
-  {
-    "objectID": "unidad-1.html#movimiento-en-coordenadas-polares",
-    "href": "unidad-1.html#movimiento-en-coordenadas-polares",
-    "title": "Unidad 1",
-    "section": "Movimiento en coordenadas polares",
-    "text": "Movimiento en coordenadas polares\nAhora es posible describir completamente el movimiento de una partícula en el plano. Se comienza escribiendo la ecuación de posición y luego derivando respecto al tiempo para obtener la velocidad y la aceleración:\n\\[\n    \\vec{r} = r\\hat{r}\n\\]\n\\[\n    \\vec{v} = \\dot{r}\\hat{r} + r \\dot{\\theta}\\hat{\\theta}\n\\]\n\\[\n    \\vec{a} = (\\ddot{r} - r \\dot{\\theta}^2)\\hat{r} + (2\\dot{r} \\dot{\\theta} + r \\ddot{\\theta})\\hat{\\theta}\n\\]"
-  },
-  {
-    "objectID": "unidad-1.html#footnotes",
-    "href": "unidad-1.html#footnotes",
-    "title": "Unidad 1",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nNo siempre es cierto que \\(\\theta = \\arctan{\\frac{y}{x}}\\), depende del intervalo.↩︎\nEs análogo para la velocidad y aceleración.↩︎"
-  },
-  {
-    "objectID": "unidad-1.html#notación-y-ecuaciones",
-    "href": "unidad-1.html#notación-y-ecuaciones",
-    "title": "Unidad 1",
-    "section": "Notación y ecuaciones",
-    "text": "Notación y ecuaciones\nSi se quiere describir la posición de un objeto \\(A\\) respecto a un objeto \\(B\\), el vector de posición puede ser denotado por \\(\\vec{r}_{A/B}\\) y se leerá como la posición de \\(A\\) respecto de \\(B\\), es decir, un observador en \\(B\\) medirá una distancia \\(r\\) entre él y \\(A\\)2.\nAnalizando geométricamente los vectores de posición, se puede demostrar rápidamente que:\n\\[\n    \\vec{r}_{A/B}=\\vec{r}_A - \\vec{r}_B\n\\]\nDonde \\(\\vec{r}_A\\) y \\(\\vec{r}_B\\) son los vectores de posición medidos desde un observador externo (típicamente, el origen del sistema de coordenadas utilizado).\nLa relación anterior se puede derivar respecto al tiempo y obtener las ecuaciones de movimiento relativo para la velocidad y la aceleración:\n\\[\n    \\vec{v}_{A/B}=\\vec{v}_A - \\vec{v}_B\n\\]\n\\[\n    \\vec{a}_{A/B}=\\vec{a}_A - \\vec{a}_B\n\\]"
-  },
-  {
-    "objectID": "unidad-1.html#movimiento-en-coordenadas-polares-1",
-    "href": "unidad-1.html#movimiento-en-coordenadas-polares-1",
-    "title": "Unidad 1",
-    "section": "Movimiento en coordenadas polares",
-    "text": "Movimiento en coordenadas polares\nEn física, para describir magnitudes y propiedades de un sistema, se debe hacer siempre respecto a un sistema de referencia, es decir, se utiliza un conjunto de convenciones para simplificar el entendimiento de una misma situación observada desde distintos lugares espaciales. Por esto, el movimiento de una partícula o cuerpo es siempre relativo a algún punto y, si el interés es conocer el movimiento respecto a otro cuerpo que también se está moviendo, se deben tener algunas consideraciones.\nSi se quiere describir la posición de un objeto \\(A\\) respecto a un objeto \\(B\\), el vector de posición puede ser denotado por \\(\\vec{r}_{A/B}\\) y se leerá como la posición de \\(A\\) respecto de \\(B\\), es decir, un observador en \\(B\\) medirá una distancia \\(r\\) entre él y \\(A\\)2.\nAnalizando geométricamente los vectores de posición, se puede demostrar rápidamente que:\n\\[\n    \\vec{r}_{A/B}=\\vec{r}_A - \\vec{r}_B\n\\]\nDonde \\(\\vec{r}_A\\) y \\(\\vec{r}_B\\) son los vectores de posición medidos desde un observador externo (típicamente, el origen del sistema de coordenadas utilizado).\nLa relación anterior se puede derivar respecto al tiempo y obtener las ecuaciones de movimiento relativo para la velocidad y la aceleración:\n\\[\n    \\vec{v}_{A/B}=\\vec{v}_A - \\vec{v}_B\n\\]\n\\[\n    \\vec{a}_{A/B}=\\vec{a}_A - \\vec{a}_B\n\\]"
-  },
-  {
-    "objectID": "unidad-1.html#movimiento-relativo",
-    "href": "unidad-1.html#movimiento-relativo",
-    "title": "Unidad 1",
-    "section": "Movimiento Relativo",
-    "text": "Movimiento Relativo\nEn física, para describir magnitudes y propiedades de un sistema, se debe hacer siempre respecto a un sistema de referencia, es decir, se utiliza un conjunto de convenciones para simplificar el entendimiento de una misma situación observada desde distintos lugares espaciales. Por esto, el movimiento de una partícula o cuerpo es siempre relativo a algún punto y, si el interés es conocer el movimiento respecto a otro cuerpo que también se está moviendo, se deben tener algunas consideraciones.\nSi se quiere describir la posición de un objeto \\(A\\) respecto a un objeto \\(B\\), el vector de posición puede ser denotado por \\(\\vec{r}_{A/B}\\) y se leerá como la posición de \\(A\\) respecto de \\(B\\), es decir, un observador en \\(B\\) medirá una distancia \\(r\\) entre él y \\(A\\)2.\nAnalizando geométricamente los vectores de posición, se puede demostrar rápidamente que:\n\\[\n    \\vec{r}_{A/B}=\\vec{r}_A - \\vec{r}_B\n\\]\nDonde \\(\\vec{r}_A\\) y \\(\\vec{r}_B\\) son los vectores de posición medidos desde un observador externo (típicamente, el origen del sistema de coordenadas utilizado).\nLa relación anterior se puede derivar respecto al tiempo y obtener las ecuaciones de movimiento relativo para la velocidad y la aceleración:\n\\[\n    \\vec{v}_{A/B}=\\vec{v}_A - \\vec{v}_B\n\\]\n\\[\n    \\vec{a}_{A/B}=\\vec{a}_A - \\vec{a}_B\n\\]"
   }
 ]

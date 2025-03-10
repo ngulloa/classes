@@ -8,10 +8,11 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - unidad-1.qmd
+      - cinematica.qmd
       - unidad-2.qmd
       - unidad-3.qmd
       - unidad-4.qmd
+      - ejercicios.qmd
 
 format:
   html:

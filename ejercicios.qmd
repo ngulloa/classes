@@ -1,0 +1,26 @@
+---
+title: "Ejercicios"
+author: "Nicolás Ulloa Gatica"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+mathjax: true
+---
+
+# Unidad 1 - Cinemática
+
+## Ejercicio 1
+
+Un asteroide viaja en dirección a la tierra a una velocidad constante de 60 km/s y se encuentra a una distancia $200 \cdot 10^6$ km. Según esta información,
+
+1.  ¿En cuántos días se estima que colisionará con el planeta?
+2.  Se quiere enviar una nave para desacelerar el asteroide y lograr que éste se detenga a una distancia de 500 km respecto a la tierra, ¿Cuál es la desaceleración que la nave debe producir si el cometa se intercepta a una distancia de $8 \cdot 10^6$ km respecto a la tierra?
+
+## Ejercicio 2
+
+Un ciclista está decendiendo por un cerro con una aceleración de 3 $m/s^2$. En cierto instante, el ciclista alcanza una velocidad de 10 $m/s$ y presiona los frenos. Si los frenos proporcionan una desaceleración de 1 $m/s^2$, calcule:
+
+1.  ¿Cuánto tiempo tarda el ciclista en detenerse por completo, desde que presionó los frenos?
+2.  ¿Qué distancia recorre el cicista antes de detenerse por completo, desde que presionó los frenos?
+3.  Si el ciclista quisiera reducir su velocidad a 2 $m/s^2$, ¿Por cuánto tiempo debe presionar los frenos?
